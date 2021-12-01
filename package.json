@@ -1,5 +1,5 @@
 {
-  "name": "react-native-apphive-jitsi",
+  "name": "@apphiveio/react-native-apphive-jitsi",
   "version": "0.1.0",
   "description": "An interface to connect to jitsi sdk",
   "main": "lib/commonjs/index",
