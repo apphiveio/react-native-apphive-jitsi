@@ -51,9 +51,13 @@ repositories {
     google()
     mavenCentral()
     jcenter()
+}
 
-    maven {
-        url("https://github.com/jitsi/jitsi-maven-repository/raw/master/releases")
+allprojects {
+    repositories {
+        maven {
+            url("https://github.com/jitsi/jitsi-maven-repository/raw/master/releases")
+        }
     }
 }
 
