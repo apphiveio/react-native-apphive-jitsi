@@ -53,7 +53,7 @@ repositories {
     jcenter()
 
     maven {
-        url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+        url("https://github.com/jitsi/jitsi-maven-repository/raw/master/releases")
     }
 }
 
@@ -61,5 +61,5 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
-    implementation ('org.jitsi.react:jitsi-meet-sdk:3.10.+') { transitive = true }
+    implementation "org.jitsi.react:jitsi-meet-sdk:3.+" { transitive = true }
 }
