@@ -1,4 +1,5 @@
 import {
+  NativeModules,
   requireNativeComponent,
   UIManager,
   Platform,
@@ -24,3 +25,31 @@ export const ApphiveJitsiView =
     : () => {
         throw new Error(LINKING_ERROR);
       };
+
+type UserInfo = {
+    displayName?: string;
+    email?: string;
+    avatar?: string;
+}
+
+type JitsiMeetModule = {
+    call: (url: string, userInfo?: UserInfo) => void;
+    audioCall: (url: string, userInfo?: UserInfo) => void;
+}
+
+const ApphiveJitsiMeetModule: JitsiMeetModule = NativeModules.ApphiveJitsiMeetModule
+
+const simpleCall = ApphiveJitsiMeetModule.call
+const simpleAudioCall = ApphiveJitsiMeetModule.audioCall
+
+ApphiveJitsiMeetModule.call = (url: string, userInfo?: UserInfo) => {
+    userInfo = userInfo || {};
+    simpleCall(url, userInfo);
+}
+
+ApphiveJitsiMeetModule.audioCall = (url: string, userInfo?: UserInfo) => {
+    userInfo = userInfo || {};
+    simpleAudioCall(url, userInfo);
+}
+
+export const ApphiveJitsiMeet = ApphiveJitsiMeetModule
