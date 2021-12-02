@@ -9,7 +9,17 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ApphiveJitsiPackage implements ReactPackage {
+public class ApphiveJitsiPackage implements ReactPackage, ApphiveJitsiMeetViewReference {
+    private ApphiveJitsiMeetView jitsiMeetViewRef = null;
+
+    public void setJitsiMeetView(ApphiveJitsiMeetView newView) {
+        this.jitsiMeetViewRef = newView;
+    }
+
+    public ApphiveJitsiMeetView getJitsiMeetView() {
+        return this.jitsiMeetViewRef;
+    }
+
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Collections.emptyList();
@@ -17,6 +27,6 @@ public class ApphiveJitsiPackage implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Arrays.<ViewManager>asList(new ApphiveJitsiViewManager());
+        return Arrays.<ViewManager>asList(new ApphiveJitsiMeetViewManager(reactContext, this));
     }
 }
